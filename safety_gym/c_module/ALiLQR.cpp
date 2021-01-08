@@ -136,6 +136,9 @@ extern "C" {
                 temp_mat = (Quu + mat(U_DIM)*damping_ratio).inverse()*(-1.0);
                 K_mat = temp_mat.matmul(Qux);
                 d_vector = temp_mat.matmul(Qu);
+                /*temp_mat = Quu + mat::eye(U_DIM)*damping_ratio;
+                K_mat = temp_mat.inverse_matmul(Qux)*(-1.0);
+                d_vector = temp_mat.inverse_matmul(Qu)*(-1.0);*/
 
                 P_mat = Qxx + K_mat.transpose().matmul(Quu.matmul(K_mat) + Qux) + Qxu.matmul(K_mat);
                 p_vector = Qx + K_mat.transpose().matmul(Quu.matmul(d_vector) + Qu) + Qxu.matmul(d_vector);

@@ -349,7 +349,7 @@ class mat{
             return this->inverse_matmul_column_vector(g, num_conjugate);
         }
 
-        mat transpose_x_value(col, g.col);
+        mat transpose_x_value(g.col, col);
         mat g_transpose = g.transpose();
         for(int i=0;i<g.col;i++){
             mat temp_x_value(&g_transpose.data[i*col], col, 1);
